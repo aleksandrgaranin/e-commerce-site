@@ -60,6 +60,10 @@ coverage.xml
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
+*.pyc
+__pycache__
+db.sqlite3
+media
 
 # Flask stuff:
 instance/
@@ -102,8 +106,10 @@ celerybeat.pid
 *.sage.py
 
 # Environments
+.
 .env
 .venv
+ecom_env/
 env/
 venv/
 ENV/
