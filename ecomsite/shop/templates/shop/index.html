@@ -63,9 +63,7 @@
                     <img src="{{ product.image }}" class="card-img-top">
                     <div class="card-body">
                         <div id="nm{{ product.id }}" class="card-title">{{ product.title }}</div>
-                        <div class="card-text">
-                           $ {{ product.price}}
-                        </div>
+                        <div id="price{{ product.id }}" class="card-text">{{ product.price}}</div>
                         <div class="detail">
                             <a class="btn btn-warning" href="/{{ product.id }}">View</a>
                             <button id="{{ product.id }}" class="btn atc btn-warning">Add to card</button>
@@ -114,12 +112,18 @@
         if(cart[item_id]!=undefined){
             quantety = cart[item_id][0] + 1;
             cart[item_id][0] = quantety;
+            cart[item_id][2] = cart[item_id][2] + parseFloat(document.getElementById("price"+ item_id).innerHTML);
+
+
 
         }
         else{
             quantety = 1;
+            price = parseFloat(document.getElementById("price"+item_id).innerHTML);
             name = document.getElementById("nm"+item_id).innerHTML;
-            cart[item_id]=[quantety,name]
+            cart[item_id]=[quantety,name,price];
+
+
         }
         console.log(cart);
         localStorage.setItem('cart',JSON.stringify(cart));
