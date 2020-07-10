@@ -11,7 +11,7 @@ class Products(models.Model):
     discount_price = models.FloatField()
     category = models.CharField(max_length=200)
     description = models.TextField()
-    image = models.CharField(max_length=300)
+    image = models.ImageField(default='item.ipg', upload_to='item_pictures')
 
 class Order(models.Model):
     items = models.CharField(max_length=1000)
