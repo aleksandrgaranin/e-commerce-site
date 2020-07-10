@@ -86,13 +86,14 @@
         }
         console.log(cart);
         localStorage.setItem('cart',JSON.stringify(cart));
-        document.getElementById("cart").innerHTML = "Cart(" + Object.keys(cart).length + ")";
-    });
+       /* document.getElementById("cart").innerHTML = "Cart(" + Object.keys(cart).length + ")";*/
+    });  
+
    
-    DisplayCart(cart);
+   /* DisplayCart(cart);
     function DisplayCart(cart){
         var cartString = "";
-        cartString += "<h5> this is your cart</h5>";
+        cartString += "<h5> Your Cart is empty </h5>";
         var cartIndex = 1;
         for(var x in cart){
             cartString += cartIndex;
@@ -103,7 +104,7 @@
         cartString += "<a href='/checkout' class='btn btn-warning' id='checkout'>Checkout</a>";
         document.getElementById("cart").setAttribute('data-content',cartString);
         $('[data-toggle="popover"]').popover();
-    }
+    }*/
     
 </script>
 {% endblock %}

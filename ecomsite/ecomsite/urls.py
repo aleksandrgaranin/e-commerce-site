@@ -24,6 +24,7 @@ urlpatterns = [
     path('', views.index,name='index'),
     path('<int:id>/',views.detail,name='detail'),
     path('checkout/',views.checkout,name='checkout'),
+    path('fireplace/',views.fireplace,name='fireplace'),
 ]
 
 urlpatterns += []+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
