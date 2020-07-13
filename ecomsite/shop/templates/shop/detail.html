@@ -10,19 +10,13 @@
             </div>
             <div class="col-md-6 desc_text" style="padding: 20px;">
                 <div class="row">
-                    <div id="nm{{ product_object.id }}" class="col-md-12 font-weight-bold">
-                        {{ product_object.title }}
-                    </div>
+                    <div id="nm{{ product_object.id }}" class="col-md-12 font-weight-bold">{{ product_object.title }}</div>
                 </div>
                 <div class="row">
-                    <div  id="price{{ product_object.id }}" class="col-md-12">
-                        $ {{ product_object.price}}
-                    </div>
+                    <div  id="price{{ product_object.id }}" class="col-md-12">{{ product_object.price}}</div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
-                        $ {{ product_object.discount_price }}
-                    </div>
+                    <div class="col-md-12">{{ product_object.discount_price }}</div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
