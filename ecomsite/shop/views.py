@@ -86,9 +86,8 @@ def checkout(request):
         total = request.POST.get("total","")
         
         order = Order(items=items,name=name,email=email,address=address,city=city,state=state,zipcode=zipcode,total=total)
-        if order is not None:
-            order.save()
-            messages.success(request,'Thank you. Your Order is in procces')
-            return redirect('index')
+        order.save()
+        messages.success(request,'Thank you. Your Order is in procces')
+        return redirect('index')
 
     return render(request,'shop/checkout.html')

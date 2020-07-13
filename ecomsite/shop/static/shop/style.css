@@ -6,3 +6,8 @@
 .card-title{
     font-weight: 600;
 }
+
+.desc_text{
+    text-align: left;
+    font-size: x-large;
+}

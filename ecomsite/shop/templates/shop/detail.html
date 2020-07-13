@@ -1,27 +1,27 @@
 {% extends 'shop/base.html'%}
 {% block body%}
         <div class="row">
-            <div class="col-md-6">
+            <div class="figure">
                 <div class="row">
-                    <div class="col-md-12">
-                        <img src="{{ product_object.image.url }}">
+                    <div class="col-md-12" style="padding: 20px;">
+                        <img src="{{ product_object.image.url }}" class="img-fluid img-thumbnail" alt="Responsive image">
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 desc_text" style="padding: 20px;">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div id="nm{{ product_object.id }}" class="col-md-12 font-weight-bold">
                         {{ product_object.title }}
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
-                        {{ product_object.price}}
+                    <div  id="price{{ product_object.id }}" class="col-md-12">
+                        $ {{ product_object.price}}
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        {{ product_object.discount_price }}
+                        $ {{ product_object.discount_price }}
                     </div>
                 </div>
                 <div class="row">
@@ -29,8 +29,49 @@
                         {{ product_object.description }}
                     </div>
                 </div>
+                <div class="row">                    
+                    <button id="{{ product_object.id }}" class="btn atc btn-warning">Add to card</button>
+                </div>
             </div>
         </div>
     </div>
 </body>
+
+
+<script type="text/javascript">
+    console.log('this is working');
+
+    if(localStorage.getItem('cart')==null){
+        var cart = {};
+    }
+    else{
+        cart = JSON.parse(localStorage.getItem('cart'));
+    }
+
+    $(document).on('click','.atc',function(){
+        console.log("the add to cart button clicked");
+        var item_id = this.id.toString();
+        console.log(item_id);
+
+        if(cart[item_id]!=undefined){
+            quantety = cart[item_id][0] + 1;
+            cart[item_id][0] = quantety;
+            cart[item_id][2] = cart[item_id][2] + parseFloat(document.getElementById("price"+ item_id).innerHTML);
+
+
+
+        }
+        else{
+            quantety = 1;
+            price = parseFloat(document.getElementById("price"+item_id).innerHTML);
+            name = document.getElementById("nm"+item_id).innerHTML;
+            cart[item_id]=[quantety,name,price];
+
+
+        }
+        console.log(cart);
+        localStorage.setItem('cart',JSON.stringify(cart));
+       /* document.getElementById("cart").innerHTML = "Cart(" + Object.keys(cart).length + ")";*/
+    });  
+</script>
 {% endblock %}
